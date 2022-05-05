@@ -5,7 +5,7 @@ Simple helper library.
 * [#include <pre/file/home.hpp>](pre/file/home.hpp): Get current user directory on any platform.
 
 ## Usage
-[Simply use via nxxm](https://nxxm.github.io/), `.nxxm/deps` file : 
+[Simply use with tipi](https://tipi.build/), `.tipi/deps` file : 
 ```
 {
   "cpp-pre/file" : {}
@@ -16,5 +16,6 @@ Simple helper library.
 [Boost Software License](./LICENSE).
 
 ```
-Copyright (c) 2012-2018 Damien Buhl alias daminetreg (damien.buhl@lecbna.org)
+Copyright (c) 2012-2022 Damien Buhl alias daminetreg (damien.buhl@lecbna.org)
+Copytight (c) 2022 Yannic Staudt alias pysco68
 ```
