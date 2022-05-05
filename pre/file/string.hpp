@@ -26,7 +26,13 @@ namespace pre::file {
 
   inline std::string to_string(const std::string &path, std::error_condition &ec) {
 
+    #if BOOST_OS_WINDOWS
+    std::filesystem::path u8path = std::filesystem::u8path((const char*)path.c_str());
+    std::ifstream ifs(u8path, std::ios::in | std::ios::binary);
+    #else  
     std::ifstream ifs(path, std::ios::in | std::ios::binary);
+    #endif
+    
     if (!ifs.is_open()) {
       ec = std::make_error_condition(std::errc::bad_file_descriptor);
       return ""s;
@@ -67,7 +73,13 @@ namespace pre::file {
 
     boost::filesystem::create_directories(boost::filesystem::path(path).parent_path());
 
+    #if BOOST_OS_WINDOWS
+    std::filesystem::path u8path = std::filesystem::u8path((const char*)path.c_str());
+    std::fstream ofs(u8path, std::ios::out | std::ios::trunc | std::ios::in | std::ios::binary);
+    #else  
     std::fstream ofs(path, std::ios::out | std::ios::trunc | std::ios::in | std::ios::binary);
+    #endif
+    
     if (!ofs.is_open()) {
       ec = std::make_error_condition(std::errc::bad_file_descriptor);
       return;
